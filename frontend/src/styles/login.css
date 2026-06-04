@@ -96,3 +96,12 @@ body {
     padding: 25px;
   }
 }
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* User can resize only vertically */
+  font-size: 16px;
+  }
