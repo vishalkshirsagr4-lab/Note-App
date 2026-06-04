@@ -50,7 +50,10 @@ function Dashboard() {
         </button>
         <button
           className="logout-btn"
-          onClick={() => { const token = localStorage.removeItem("token"); }}
+          onClick={() => {
+             const token = localStorage.removeItem("token"); 
+             navigate('/');
+            }}
         >
           Logout
         </button>
