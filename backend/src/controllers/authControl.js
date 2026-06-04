@@ -43,36 +43,54 @@ const userRegister = async (req,res) => {
     }
 }
 
-const userLogin = async (req,res) => {
+const userLogin = async (req, res) => {
     try {
-       const { email , password } = req.body;
+        const { email, password } = req.body;
 
-       const user = await User.findOne({ email });
-       
-       const isPassword = await bcrypt.compare(
-        password,
-        user.password
-       );
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Please provide email and password"
+            });
+        }
 
-       if(!user || !isPassword) {
-        return res.status(400).json({
-            message:"Invalid Email and password"
-         })
-       }
+        const user = await User.findOne({ email });
 
-       const token = generateToken( user._id , user.email );
+        if (!user) {
+            return res.status(400).json({
+                message: "Invalid Email or Password"
+            });
+        }
 
-       res.status(200).json({
-        message:"Login Successfull",
-        token ,
-        user
-       })
+        const isPassword = await bcrypt.compare(
+            password,
+            user.password
+        );
 
-    } catch(e) {
-       res.status(400).json({
-        message: e.message
-       })
+        if (!isPassword) {
+            return res.status(400).json({
+                message: "Invalid Email or Password"
+            });
+        }
+
+        const token = generateToken(
+            user._id,
+            user.email
+        );
+
+        res.status(200).json({
+            message: "Login Successful",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email
+            }
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
     }
-}
-
+};
 module.exports={ userRegister , userLogin }
