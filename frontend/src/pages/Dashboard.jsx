@@ -48,6 +48,12 @@ function Dashboard() {
         >
           + Add Note
         </button>
+        <button
+          className="logout-btn"
+          onClick={() => { const token = localStorage.removeItem("token"); }}
+        >
+          Logout
+        </button>
       </div>
 
       <div className="notes-container">
