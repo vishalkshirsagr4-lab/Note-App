@@ -25,6 +25,11 @@ function Dashboard() {
     }
   };
 
+  const logout = () => {
+      const token = localStorage.removeItem("token"); 
+      navigate('/');
+  }
+
   const handleDelete = async (id) => {
     try {
       const res = await noteService.deleteNote(id);
@@ -50,10 +55,7 @@ function Dashboard() {
         </button>
         <button
           className="logout-btn"
-          onClick={() => {
-             const token = localStorage.removeItem("token"); 
-             navigate('/');
-            }}
+          onClick={()=>{logout()}}
         >
           Logout
         </button>
