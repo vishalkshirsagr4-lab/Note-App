@@ -15,6 +15,13 @@
   color: #222;
 }
 
+.btns {
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .add-btn {
   background: #2563eb;
   color: white;

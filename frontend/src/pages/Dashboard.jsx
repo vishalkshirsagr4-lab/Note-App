@@ -41,8 +41,8 @@ function Dashboard() {
     <div className="dashboard">
       <div className="dashboard-header">
         <h1>My Notes</h1>
-
-        <button
+       <div className="btns">
+       <button
           className="add-btn"
           onClick={() => navigate("/add-note")}
         >
@@ -54,6 +54,7 @@ function Dashboard() {
         >
           Logout
         </button>
+       </div>
       </div>
 
       <div className="notes-container">
