@@ -71,16 +71,17 @@ function Editnote () {
       
 
         <div>
-          <label>Content</label>
-          <br />
-          <input
-            type="text"
-            name="content"
-            value={note.content}
-            onChange={handleChange}
-            required
-          />
-        </div>
+  <label>Content</label>
+  <br />
+  <textarea
+    name="content"
+    value={note.content}
+    onChange={handleChange}
+    required
+    rows={5}
+    placeholder="Write your note here..."
+  />
+</div>
 
 
         <button onClick={() => EditNote() }>
