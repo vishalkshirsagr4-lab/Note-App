@@ -11,6 +11,10 @@ function Dashboard() {
 
   useEffect(() => {
     fetchNotes();
+    const token = localStorage.getItem("token");
+    if(!token) {
+      navigate('/');
+    }
   }, []);
 
   const fetchNotes = async () => {
@@ -20,7 +24,6 @@ function Dashboard() {
       setNotes(data);
     } catch (error) {
       toast.error(error);
-      navigate('/');
     } finally {
       setloading(false);
     }
