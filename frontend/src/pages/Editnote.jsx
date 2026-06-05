@@ -2,6 +2,7 @@ import { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import noteService from "../api/noteService";
 import { useParams } from "react-router-dom";
+import { toast } from 'react-toastify'
 import '../styles/login.css'
 
 function Editnote () {
@@ -41,10 +42,10 @@ function Editnote () {
       try {
         setloading(true)
         const res = await noteService.updateNote(id, note);
-        alert("Note Updated");
+        toast.success("Note Updated");
         navigate("/Dashboard");
       } catch (e) {
-        alert(e.response?.data?.message || "Updating Failed");
+        toast.error(e.response?.data?.message || "Updating Failed");
       } finally {
         setloading(false);
       }
