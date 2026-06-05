@@ -10,11 +10,11 @@ function Dashboard() {
   const [ loading , setloading ] = useState(false);
 
   useEffect(() => {
-    fetchNotes();
     const token = localStorage.getItem("token");
     if(!token) {
       navigate('/');
     }
+    fetchNotes();
   }, []);
 
   const fetchNotes = async () => {
