@@ -22,7 +22,7 @@ function App() {
             <Route path='/' element={ <Dashboard/> }/>
         </Routes>
         <ToastContainer
-              position='top-right'
+              position='top-center'
               autoClose={2000}
          />
       </BrowserRouter>
