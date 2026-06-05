@@ -43,7 +43,6 @@ function Editnote () {
         setloading(true)
         const res = await noteService.updateNote(id, note);
         toast.success("Note Updated");
-        navigate("/Dashboard");
       } catch (e) {
         toast.error(e.response?.data?.message || "Updating Failed");
       } finally {
