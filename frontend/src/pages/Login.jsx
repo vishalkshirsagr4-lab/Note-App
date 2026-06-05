@@ -3,6 +3,7 @@ import axios from 'axios';
 import { login } from '../api/authService';
 import { useNavigate } from 'react-router-dom'; 
 import '../styles/login.css'
+import { toast } from 'react-toastify';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -35,10 +36,10 @@ function Login() {
 
     try {
       const res = await login(formData) ;
-      alert('Login Successful');
+      toast.success('Login Successful');
       navigate('/Dashboard');
     } catch (error) {
-      alert(
+      toast.error(
         error.response?.data?.message || 'Login Failed'
       );
     }

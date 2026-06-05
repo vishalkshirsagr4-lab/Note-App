@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import noteService from "../api/noteService";
+import { toast } from "react-toastify";
 import "../styles/dashboard.css";
 
 function Dashboard() {
@@ -18,7 +19,7 @@ function Dashboard() {
       const data = await noteService.getAllNotes();
       setNotes(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error);
       navigate('/');
     } finally {
       setloading(false);
@@ -36,9 +37,9 @@ function Dashboard() {
 
       setNotes(notes.filter((note) => note._id !== id));
 
-      alert("Note Deleted");
+      toast.success("Note Deleted");
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 

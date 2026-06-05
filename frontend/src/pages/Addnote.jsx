@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import noteService from "../api/noteService";
 import '../styles/login.css'
+import { toast } from "react-toastify";
 
 function Addnote () {
     const [ note , setnote ] = useState({
@@ -21,11 +22,9 @@ function Addnote () {
         try {
           setloading(true);
           const res = await noteService.addNote(note);
-          alert('Note created ');
-          console.log(res);
-
+          toast.success('Note created ');
         } catch(e) {
-           alert(
+           toast.error(
                 e.response?.data?.message || 'Note creating Failed'
             );
         } finally {

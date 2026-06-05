@@ -3,6 +3,7 @@ import axios from "axios";
 import { register } from "../api/authService";
 import { useNavigate } from "react-router-dom";
 import '../styles/register.css'
+import { toast } from "react-toastify";
 
 function Register() {
     const [ Form , setForm ] = useState({
@@ -23,11 +24,10 @@ function Register() {
         e.preventDefault();
         try {
           const  res = await register(Form);
-            alert('account created successfully');
-            console.log(res);
+            toast.success('account created successfully');
             navigate('/login');
         } catch (e) {
-           alert(
+           toast.error(
              e.response?.data?.message || 'Register Failed'
            )
         }
