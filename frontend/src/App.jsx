@@ -20,12 +20,11 @@ function App() {
             <Route path='/' element= { <Login/> }/>
             <Route path='/register' element= { <Register/> }/>
             <Route path='/' element={ <Dashboard/> }/>
-
-            <ToastContainer
+        </Routes>
+        <ToastContainer
               position='top-right'
               autoClose={3000}
-            />
-        </Routes>
+         />
       </BrowserRouter>
     </>
   )
